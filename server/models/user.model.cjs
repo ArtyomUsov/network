@@ -1,6 +1,5 @@
-const { schema, model, Schema, SchemaTypes } = require("mongoose");
+const { model, Schema } = require("mongoose");
 
-const userModel = model("user", schema);
 const schema = new Schema({
   name: {
     type: Schema.Types.String,
@@ -38,4 +37,5 @@ const schema = new Schema({
   },
 });
 
+const userModel = model("user", schema);
 module.exports = userModel;
