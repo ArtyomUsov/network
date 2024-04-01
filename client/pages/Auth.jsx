@@ -36,6 +36,9 @@ const Auth = () => {
 
   const registerForm = (
     <>
+      <TextField label="Name" name="name" value={""} onChange={handleChange} />
+      <TextField label="Last Name" name="lastName" value={""} onChange={handleChange} />
+      <TextField label="Email" name="email" value={""} onChange={handleChange} />
       <TextField label="Login" name="login" value={loginData.login} onChange={handleChange} />
       <TextField type="password" label="Password" name="password" value={loginData.password} onChange={handleChange} />
       <TextField
@@ -55,7 +58,7 @@ const Auth = () => {
   );
 
   return (
-    <Box sx={{ pt: 20 }}>
+    <Box sx={{ pt: 4 }}>
       <Box sx={{ m: "auto", p: 4, display: "grid", gap: 1, maxWidth: 400, border: "2px solid grey", borderRadius: 3 }}>
         <Typography variant="h1" gutterBottom>
           Network
