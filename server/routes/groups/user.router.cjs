@@ -1,20 +1,15 @@
 const { Router } = require("express");
+const UserController = require('../../controllers/User.controller.cjs')
 const router = new Router();
 
-router.get("/", (req, res) => {
-  res.status(200).send(`get`);
-});
+router.get("/", UserController.getAll);
 
-router.post("/", (req, res) => {
-  res.status(200).send(`post`);
-});
+router.get("/:id", UserController.getById);
 
-router.put("/", (req, res) => {
-  res.status(200).send(`put`);
-});
+router.post("/", UserController.create);
 
-router.delete("/", (req, res) => {
-  res.status(200).send(`delete`);
-});
+router.put("/", UserController.update);
+
+router.delete("/", UserController.delete);
 
 module.exports = router;
