@@ -13,6 +13,33 @@ class UserController {
       res.json("get error");
     }
   }
+
+  static async getCurrentUser(req, res) {
+    try {
+      const token = req.headers.authorization.split(" ")[1];
+      const decodedToken = jwt.verify(token, SECRET_KEY);
+      // console.log(decodedToken);
+      const userLogin = decodedToken.login;
+      const userData = await user.findOne({
+        login: userLogin,
+      });
+      console.log(userData);
+      if (!userData) {
+        return res.status(404).json({ message: "Пользователь не найден" });
+      }
+      const filteredUserData = {
+        name: userData.name,
+        lastName: userData.lastName,
+        avatar: userData.avatar
+      };
+      console.log(filteredUserData);
+      return res.status(200).json({ userData: filteredUserData });
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Произошла ошибка при получении пользователя" });
+    }
+  }
+
   static async getById(req, res) {
     try {
       const { id } = req.params;
@@ -28,11 +55,12 @@ class UserController {
   static async create(req, res) {
     try {
       const { name, lastName, login, password, email, avatar } = req.body;
+      const hashedPassword = bcrypt.hashSync(password + SECRET_KEY, 5);
       const newUser = await user.create({
         name,
         lastName,
         login,
-        password,
+        password: hashedPassword,
         email,
         avatar,
       });
