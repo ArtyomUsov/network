@@ -25,7 +25,7 @@ const schema = new Schema({
     min: 6,
     max: 10,
   },
-  emale: {
+  email: {
     type: Schema.Types.String,
     required: true,
     min: 1,
