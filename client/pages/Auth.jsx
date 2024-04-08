@@ -39,7 +39,7 @@ const Auth = () => {
       // console.log(localStorage.getItem("token"));
       // console.log(data);
 
-      navigate("/api/main");
+      navigate("/main");
     } catch (error) {
       console.error("Login error:", error);
     }
