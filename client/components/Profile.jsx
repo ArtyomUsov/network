@@ -49,7 +49,7 @@ export default function Profile() {
     navigate("/auth");
   };
 
-  const handleAvatarClick = () => {
+  const handleChangeAvatar = () => {
     const input = document.createElement("input");
     input.type = "file";
     input.accept = "image/*";
@@ -115,7 +115,7 @@ export default function Profile() {
               borderColor: "white",
               cursor: "pointer",
             }}
-            onClick={handleAvatarClick}
+            onClick={handleChangeAvatar}
           />
           <CardContent sx={{ maxWidth: 600, margin: "auto" }}>
             <Typography gutterBottom variant="h5" component="div">
