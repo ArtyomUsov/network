@@ -10,14 +10,14 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      navigate('/api/main'); 
+      navigate('/main'); 
     }
   }, [navigate]);
 
   return (
     <>
       <Routes>
-        <Route path="/api/">
+        <Route path="/">
           <Route path="auth" element={<Auth />} />
           <Route path="main" element={<Main />} />
           <Route path="*" element={<NotFoundPage />} />
