@@ -5,7 +5,7 @@ const routerAuth = require("./groups/auth.router.cjs");
 const validateAuth = require("../middlewares/auth/index.cjs");
 
 router.use("/user",
-//  validateAuth,
+ validateAuth,
   routerUser);
 router.use("/auth", routerAuth);
 
